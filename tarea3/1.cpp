@@ -29,16 +29,16 @@ int main(int argc, char **argv)
     return 0;
 }
 
-double f(double a)
+double f(double x)
 {
-    return a * std::cos(a);
+    return x * std::cos(x);
 }
 
 double deriv2a(fptr fun, double x, double h){
-    return ((f(x+h)-f(x))-(f(x)-f(x-h))/std::pow(h,2));
+    return ((fun(x+h)-fun(x))-(fun(x)-fun(x-h))/std::pow(h,2));
 }
 double deriv2b(fptr fun, double x, double h){
-    return ((f(x+h))+(f(x-h))-(2*f(x)))/std::pow(h,2);
+    return ((fun(x+h))+(fun(x-h))-(2*fun(x)))/std::pow(h,2);
 }
 double deriv2_exact(double b){
     return (-2 * std::sin(b)) - (b * std::cos(b));
